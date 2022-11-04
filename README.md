@@ -1,5 +1,6 @@
-j3lte/debian-torproxy
-==================
+[![Docker Pulls](https://img.shields.io/docker/pulls/j3lte/debian-torproxy.svg)](https://hub.docker.com/r/j3lte/debian-torproxy/) [![Twitter Follow](https://img.shields.io/twitter/follow/j3lte.svg?style=social)](https://twitter.com/j3lte)
+
+# j3lte/debian-torproxy
 
 ```
                Docker Container
@@ -16,9 +17,9 @@ Client <---->   Privoxy <-> HAproxy <-> Tor Proxy 2
 ## Why?
 
 - Tor is a great tool to anonymize your traffic, but it's not a proxy.
--  Lots of IP addresses. One single endpoint for your client.
--  Load-balancing by HAproxy.
--  Optionaly adds support for [Privoxy](https://www.privoxy.org/) using
+- Lots of IP addresses. One single endpoint for your client.
+- Load-balancing by HAproxy.
+- Optionaly adds support for [Privoxy](https://www.privoxy.org/) using
 `-e privoxy=1`, useful for http (default `8118`, changable via
 `-e privoxy_port=<port>`) proxy forward and ad removal.
 
