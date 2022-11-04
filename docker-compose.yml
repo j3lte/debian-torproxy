@@ -1,8 +1,11 @@
 version: "3.9"
 services:
   torproxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: debian-torproxy
     container_name: debian-torproxy
-    build: .
     restart: unless-stopped
     ports:
       - "8118:8118"
