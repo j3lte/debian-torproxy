@@ -21,9 +21,9 @@ jobs:
       # For a new commit on other branches, use the branch name as the tag for Docker image.
       # For a new tag, copy that tag name as the tag for Docker image.
       IMAGE_TAGS: |
-        type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }},suffix=-debian
-        type=ref,event=branch,enable=${{ !endsWith(github.ref, github.event.repository.default_branch) }},suffix=-debian
-        type=ref,event=tag,suffix=-debian
+        type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
+        type=ref,event=branch,enable=${{ !endsWith(github.ref, github.event.repository.default_branch) }}
+        type=ref,event=tag
       # Define default tag "flavor" for docker/metadata-action per
       # https://github.com/docker/metadata-action#flavor-input
       # We turn off 'latest' tag by default.
@@ -72,7 +72,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
           # For pull requests, we run the Docker build (to ensure no PR changes break the build),
           # but we ONLY do an image push to DockerHub if it's NOT a PR
           push: ${{ github.event_name != 'pull_request' }}
