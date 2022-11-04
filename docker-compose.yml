@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  torproxy:
+    container_name: debian-torproxy
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8118:8118"
+      - "5566:5566"
+      - "2090:2090"
+    environment:
+      tors: 10 # uncomment to set the amount of tor instances
+      # new_circuit_period: 120 # uncomment to set new circuit period
+      # max_circuit_dirtiness: 600 # uncomment to set max circuit dirtiness
+      # circuit_build_timeout: 60  # uncomment to set circuit build timeout
+      # tor_bridges: "br1;br2;br3" # uncomment to set tor bridges
+      # test_url: "http://google.com" # uncomment to set test url
+      # test_status: "302" # uncomment to set test status
+      # haproxy_stats: 2090 # uncomment to enable haproxy stats port
+      # haproxy_login: "admin" # uncomment to set haproxy stats login
+      # haproxy_pass: "admin" # uncomment to set haproxy stats password
+      # haproxy_port: 5566 # uncomment to set haproxy port
+      # privoxy_port: 8118 # uncomment to set privoxy port
+      # privoxy_permit: "" # uncomment to set privoxy permit
+      # privoxy_deny: "" # uncomment to set privoxy deny
+      privoxy: 1 # uncomment to enable privoxy
