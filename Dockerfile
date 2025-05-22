@@ -1,19 +1,19 @@
-FROM debian:bookworm
+FROM debian:bookworm-slim
 
 LABEL maintainer="Jelte Lagendijk <jwlagendijk@gmail.com>"
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   tor \
   haproxy \
   privoxy \
   obfs4proxy \
   ruby \
-  ruby-dev \
-  ruby-bundler \
   ruby-nokogiri \
   ruby-socksify \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && gem install bundler \
+  && gem cleanup
 
 ADD templates/torrc.erb       /usr/local/etc/torrc.erb
 ADD templates/haproxy.cfg.erb /usr/local/etc/haproxy.cfg.erb
