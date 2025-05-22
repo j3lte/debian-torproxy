@@ -47,8 +47,11 @@ Client <---->   Privoxy <-> HAproxy <-> Tor Proxy 2
 # build docker container
 docker build -t j3lte/debian-torproxy:latest .
 
-# ... or pull docker container
+# ... or pull docker container (Github)
 docker pull j3lte/debian-torproxy:latest
+
+# ... or pull docker container (Github)
+docker pull ghcr.io/j3lte/debian-torproxy:latest
 
 # start docker container
 docker run -d -p 5566:5566 -p 2090:2090 -e tors=25 j3lte/debian-torproxy
