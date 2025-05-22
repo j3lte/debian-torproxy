@@ -25,21 +25,21 @@ Client <---->   Privoxy <-> HAproxy <-> Tor Proxy 2
 
 ## Environment Variables
 
-Variable | Type | Description | Default
---- | --- | --- | ---
-`tors` | Integer | Number of tor instances to run | 20
-`new_circuit_period` | Integer | NewCircuitPeriod parameter value in seconds | 120
-`max_circuit_dirtiness` | Integer | MaxCircuitDirtiness parameter value in seconds | 600
-`circuit_build_timeout` | Integer | CircuitBuildTimeout parameter value in seconds | 60
-`privoxy` | Boolean | Set to run insance of privoxy in front of haproxy. | 0
-`privoxy_port` | Integer | Port for privoxy | 8118
-`privoxy_permit` | String | Space-separated list of source addresses for permit-access option. | *Unset*
-`privoxy_deny` | String | Space-separated list of source addresses for deny-access option. | *Unset*
-`haproxy_port` | Integer | Port for haproxy | 5566
-`haproxy_stats` | Integer | Port for haproxy monitor. | 2090
-`haproxy_login` and `haproxy_pass` | String | BasicAuth config for haproxy monitor | admin *(both)*
-`test_url` | String | URL for health check throught Tor proxy. | http://google.com
-`test_status` | Integer | HTTP status code for `test_url` in working case. | 302
+| Variable                           | Type    | Description                                                        | Default           |
+| ---------------------------------- | ------- | ------------------------------------------------------------------ | ----------------- |
+| `tors`                             | Integer | Number of tor instances to run                                     | 20                |
+| `new_circuit_period`               | Integer | NewCircuitPeriod parameter value in seconds                        | 120               |
+| `max_circuit_dirtiness`            | Integer | MaxCircuitDirtiness parameter value in seconds                     | 600               |
+| `circuit_build_timeout`            | Integer | CircuitBuildTimeout parameter value in seconds                     | 60                |
+| `privoxy`                          | Boolean | Set to run insance of privoxy in front of haproxy.                 | 0                 |
+| `privoxy_port`                     | Integer | Port for privoxy                                                   | 8118              |
+| `privoxy_permit`                   | String  | Space-separated list of source addresses for permit-access option. | *Unset*           |
+| `privoxy_deny`                     | String  | Space-separated list of source addresses for deny-access option.   | *Unset*           |
+| `haproxy_port`                     | Integer | Port for haproxy                                                   | 5566              |
+| `haproxy_stats`                    | Integer | Port for haproxy monitor.                                          | 2090              |
+| `haproxy_login` and `haproxy_pass` | String  | BasicAuth config for haproxy monitor                               | admin *(both)*    |
+| `test_url`                         | String  | URL for health check throught Tor proxy.                           | http://google.com |
+| `test_status`                      | Integer | HTTP status code for `test_url` in working case.                   | 302               |
 
 ## Usage
 
@@ -79,7 +79,7 @@ docker run -d -p 5566:5566 -p 2090:2090 -e haproxy_login=MySecureLogin \
 ## Docker Compose
 
 ```yaml
-version: "3.9"
+---
 services:
   torproxy:
     image: j3lte/debian-torproxy
